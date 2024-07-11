@@ -10,19 +10,21 @@
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = 	
-CC = cc
-RM = rm -f
-CFLAGS = -Wall -Wextra -Werror
 NAME = so_long
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
+LDFLAGS = -L./minilibx-linux -lmlx -lX11 -lXext -lm
+
+SRCS = so_long.c
 OBJS = $(SRCS:.c=.o)
-OBJSB = $(SRCSB:.c=.o)
+
+RM = rm -f
 
 .c.o:
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	ar rcs $(NAME) $(OBJS)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 all: $(NAME)
 
@@ -33,3 +35,5 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
