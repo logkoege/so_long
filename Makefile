@@ -6,34 +6,32 @@
 #    By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 05:41:14 by logkoege          #+#    #+#              #
-#    Updated: 2024/07/06 05:46:06 by logkoege         ###   ########.fr        #
+#    Updated: 2024/07/12 18:58:06 by logkoege         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./minilibx-linux
-LDFLAGS = -L./minilibx-linux -lmlx -lX11 -lXext -lm
+CFLAGS = -Wall -Wextra -Werror
+MLX = -L./minilibx-linux -lmlx -lX11 -lXext -lm
+INCLUDES = -I./minilibx-linux -I.
 
-SRCS = so_long.c
-OBJS = $(SRCS:.c=.o)
-
-RM = rm -f
-
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $@
-
-$(NAME): $(OBJS)
-	$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+SRC = so_long.c
+OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX) -o $(NAME)
+
 clean:
-	$(RM) $(OBJS)
+	rm -f $(OBJ)
 
 fclean: clean
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
 .PHONY: all clean fclean re
+
