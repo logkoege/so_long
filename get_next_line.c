@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/12 18:58:08 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/07/15 11:32:44 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,17 +124,4 @@ char	*get_next_line(int fd)
 	if (ft_strlen(ligne) == 0)
 		return (NULL);
 	return (ligne);
-}
-int	main(void)
-{
-	int	fd;
-
-	fd = open("tourpal.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-
-
 }
