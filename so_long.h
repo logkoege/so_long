@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/20 15:14:37 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/07/22 18:44:39 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,11 @@ typedef struct s_logan
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	*map;
-	char	**map_array;
 	int		player_X;
 	int		player_Y;
+	int		map_X;
+	int		map_Y;
+	int		PLAYER;
 }	t_log;
 
 #endif

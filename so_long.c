@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:05:58 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/20 15:05:39 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/07/24 16:26:33 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,17 +19,20 @@ void	ft_parsmap(char *argv, t_log *log)
 	
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
-	{
-		mlx_destroy_window(log->mlx_ptr, log->win_ptr);
 		exit(EXIT_SUCCESS);
-	}
 	while(1)
 	{
 		ligne = get_next_line(fd);
 		if (!ligne)
 			break ;
+		log->map_X = ft_strlen(ligne);
 		log->map = ft_strjoin(log->map, ligne);
 		free(ligne);
+		log->map_Y++;
+	}
+	if (log->map_Y == log->map_X)
+	{
+		exit(EXIT_SUCCESS);
 	}
 	close(fd);
 }
@@ -54,30 +57,30 @@ int	ft_key(int keycode, t_log *log)
 	}
 	// if (keycode == W)
 	// {
-	// 	if (!(p == pos_up))
-	// 		p = pos_up;
-	// 	if (y + 1 != (MUR))
+	// 	if (!(PLAYER == pos_up))
+	// 		PLAYER = pos_up;
+	// 	if (player_Y + 1 != (MUR))
 	// 		go_up;
 	// }
 	// if (keycode == A)
 	// {
-	// 	if (!(p == pos_left))
-	// 		p = pos_left;
-	// 	if (x - 1 != (MUR))
+	// 	if (!(PLAYER == pos_left))
+	// 		PLAYER = pos_left;
+	// 	if (player_X- 1 != (MUR))
 	// 		go_left;
 	// }
 	// if (keycode == S)
 	// {
-	// 	if (!(p == pos_down))
-	// 		p = pos_down;
-	// 	if (y - 1 != (MUR))
+	// 	if (!(PLAYER == pos_down))
+	// 		PLAYER = pos_down;
+	// 	if (player_Y - 1 != (MUR))
 	// 		go_down;
 	// }
 	// if (keycode == D)
 	// {
-	// 	if (!(p == pos_right))
-	// 		p = pos_right;
-	// 	if (x + 1 != (MUR))
+	// 	if (!(PLAYER == pos_right))
+	// 		PLAYER = pos_right;
+	// 	if (player_X+ 1 != (MUR))
 	// 		go_right;
 	// }
 	return (0);
