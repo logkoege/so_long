@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/15 11:32:44 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/08/02 00:24:06 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ char	*ft_split(char *tab, char c)
 		return (tab);
 	while (tab[chr] != c)
 		chr++;
-	if (!tab[chr])
-		ft_freenull(tab);
 	str = malloc(sizeof(char) * (chr + 2));
 	if (!str)
 		return (NULL);
@@ -64,13 +62,11 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 
-	if (!s1 && !s2)
+	if (!s1 || !s2)
 		return (NULL);
-	if (!s1)
-		return (ft_strdup(s2));
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
-		ft_freenull(str);
+		return (NULL);
 	str = copy_cat(str, s1, s2);
 	free(s1);
 	return (str);
@@ -114,14 +110,14 @@ char	*get_next_line(int fd)
 		srch_read = read(fd, read_in, BUFFER_SIZE);
 		if (srch_read == 0)
 			break ;
-		if (srch_read < 0)
+		if (srch_read < 0 && ft_free(ligne))
 			return (NULL);
 		read_in[srch_read] = '\0';
 		ligne = (ft_strjoin(ligne, read_in));
 	}
 	ft_strncpy(apres_n, ligne, '\n');
 	ligne = ft_split(ligne, '\n');
-	if (ft_strlen(ligne) == 0)
+	if (ft_strlen(ligne) == 0 && ft_free(ligne))
 		return (NULL);
 	return (ligne);
 }

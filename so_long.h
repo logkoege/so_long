@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/22 18:44:39 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/08/05 16:01:15 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include "get_next_line.h"
-#include <string.h>
+# include <string.h>
 
 # define MAP_WIDTH 10
 # define MAP_HEIGHT 10
@@ -35,11 +35,21 @@ typedef struct s_logan
 	void	*mlx_ptr;
 	void	*win_ptr;
 	char	*map;
-	int		player_X;
-	int		player_Y;
-	int		map_X;
-	int		map_Y;
-	int		PLAYER;
+	int		player_x;
+	int		player_y;
+	int		map_x;
+	int		map_y;
+	int		player;
+	int		len;
+	int		nbligne;
+	char	**tmap;
+	int		i;
+	int		j;
 }	t_log;
+
+void	tourmap(char *ligne, t_log *log);
+void	ft_while(t_log *log, char *ligne, int fd);
+void	ft_tligne(char *ligne, int fd, t_log *log);
+void	ft_freexit(char *str);
 
 #endif

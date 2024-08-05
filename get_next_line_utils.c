@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:25 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/12 18:58:09 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/07/05 21:31:33 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strdup(char *s1)
 	i = 0;
 	s2 = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!s2)
-		ft_freenull(s1);
+		return (NULL);
 	while (s1[i])
 	{
 		s2[i] = s1[i];
@@ -67,8 +67,8 @@ void	ft_bzero(void *s, size_t n)
 	}
 }
 
-int	ft_freenull(char *str)
+int	ft_free(char *str)
 {
 	free(str);
-	return (0);
+	return (1);
 }
