@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:05:58 by logkoege          #+#    #+#             */
-/*   Updated: 2024/08/05 20:11:35 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/08/08 16:23:29 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_parsmap(char *argv, t_log *log)
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_SUCCESS);
-	ft_tligne(ligne, fd, log);
+	ft_size_ligne(ligne, fd, log);
 	fd = open(argv, O_RDONLY);
 	if (fd == -1)
 		exit(EXIT_SUCCESS);
@@ -31,7 +31,7 @@ void	ft_parsmap(char *argv, t_log *log)
 	log->map = ft_strjoin(log->map, ligne);
 	free(ligne);
 	log->map_y = 1;
-	ft_while(log, ligne, fd);
+	ft_while_gnl(log, ligne, fd);
 	free(log->tmap);
 	close(fd);
 }

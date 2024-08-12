@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/08/05 16:01:15 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/08/12 19:52:42 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,19 @@ typedef struct s_logan
 	char	**tmap;
 	int		i;
 	int		j;
+	int		C;
+	int		P;
+	int		E;
+	int		check_c;
+	int		check_p;
+	int		check_e;
+
 }	t_log;
 
 void	tourmap(char *ligne, t_log *log);
-void	ft_while(t_log *log, char *ligne, int fd);
-void	ft_tligne(char *ligne, int fd, t_log *log);
+void	ft_while_gnl(t_log *log, char *ligne, int fd);
+void	ft_size_ligne(char *ligne, int fd, t_log *log);
 void	ft_freexit(char *str);
+void	ft_check_cpe(t_log *log);
 
 #endif
