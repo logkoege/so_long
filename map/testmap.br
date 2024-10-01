@@ -1,0 +1,40 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    testmap.br                                         :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/09/22 23:51:35 by logkoege          #+#    #+#              #
+#    Updated: 2024/09/22 23:51:36 by logkoege         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+	// if (keycode == W)
+	// {
+	// 	if (!(PLAYER == pos_up))
+	// 		PLAYER = pos_up;
+	// 	if (player_Y + 1 != (MUR))
+	// 		player_y++;
+	// }
+	// if (keycode == A)
+	// {
+	// 	if (!(PLAYER == pos_left))
+	// 		PLAYER = pos_left;
+	// 	if (player_X- 1 != (MUR))
+	// 		player_x--;
+	// }
+	// if (keycode == S)
+	// {
+	// 	if (!(PLAYER == pos_down))
+	// 		PLAYER = pos_down;
+	// 	if (player_Y - 1 != (MUR))
+	// 		player_y--;
+	// }
+	// if (keycode == D)
+	// {
+	// 	if (!(PLAYER == pos_right))
+	// 		PLAYER = pos_right;
+	// 	if (player_X+ 1 != (MUR))
+	// 		player_x++;
+	// }

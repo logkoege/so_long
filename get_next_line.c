@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:34:50 by logkoege          #+#    #+#             */
-/*   Updated: 2024/08/08 16:22:28 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/01 00:29:45 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,12 @@ char	*ft_strjoin(char *s1, char *s2)
 {
 	char	*str;
 
-	if (!s1 || !s2)
+	if (!s1 && !s2)
 		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
 	str = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
 	if (!str)
 		return (NULL);
