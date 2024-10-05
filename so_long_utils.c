@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:25:02 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/05 02:32:19 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:22:53 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,9 @@ void	tourmap(char *ligne, t_log *log)
 
 void	ft_while_gnl(t_log *log, int fd, char *argv)
 {
-	char *ligne;
-	
+	char	*ligne;
+
 	fd = open(argv, O_RDONLY);
-	
 	while (1)
 	{
 		ligne = get_next_line(fd);
@@ -68,8 +67,10 @@ void	ft_while_gnl(t_log *log, int fd, char *argv)
 
 void	ft_size_ligne(int fd, t_log *log)
 {
-	char *ligne;
-	int i = 0;
+	char	*ligne;
+	int		i;
+
+	i = 0;
 	log->nbligne = 0;
 	while (ligne)
 	{
@@ -82,32 +83,28 @@ void	ft_size_ligne(int fd, t_log *log)
 		free(ligne);
 		i = 1;
 	}
+	if (IMG_HEIGHT * (log->nbligne - 1) > 1080
+		|| (log->map_x - 1) * IMG_WIDTH > 1920)
+	{
+		write(1, "error map trop grande\n", 22);
+		exit(EXIT_SUCCESS);
+	}
 	log->tmap = malloc (sizeof(char *) * (log->nbligne));
 	close(fd);
 }
 
-void	ft_freexit(t_log *log)
+void	ft_parsmap(char *argv, t_log *log)
 {
-	int	j;
+	int		fd;
 
-	j = 0;
-	write(1, "Error\n", 6);
-	if (log->tmap)
-	{
-		while (log->tmap[log->j])
-		{
-			free(log->tmap[log->j]);
-			log->j--;
-		}
-		free(log->tmap);
-	}
-	if (log->copy_map)
-	{
-		while (log->copy_map[log->j])
-			free(log->copy_map[j++]);
-		free(log->copy_map);
-	}
-	exit(EXIT_SUCCESS);
+	fd = open(argv, O_RDONLY);
+	if (fd < 0)
+		exit(EXIT_SUCCESS);
+	(void)log;
+	ft_size_ligne(fd, log);
+	ft_while_gnl(log, fd, argv);
+	copy_map(log);
+	close(fd);
 }
 
 void	ft_check_cpe(t_log *log)
@@ -125,78 +122,5 @@ void	ft_check_cpe(t_log *log)
 		if (log->tmap[log->j][t] == 'E')
 			log->e++;
 		t++;
-	}
-}
-
-
-void	copy_map(t_log *log)
-{
-	int	i;
-
-	i = 0;
-	log->copy_map = malloc(sizeof(char *) * (log->nbligne));
-	while (i < log->nbligne)
-	{
-		log->copy_map[i] = ft_strdup(log->tmap[i]);
-		i++;
-	}
-	find_player_xy(log);
-	flood_fill(log, log->player_x, log->player_y);
-	ft_mapcmp(log);
-}
-
-void	flood_fill(t_log *log, int player_x, int player_y)
-{
-	if (log->copy_map[player_y][player_x] == '1'
-			|| log->copy_map[player_y][player_x] == 'V')
-		return ;
-	log->copy_map[player_y][player_x] = 'V';
-	flood_fill(log, player_x + 1, player_y);
-	flood_fill(log, player_x - 1, player_y);
-	flood_fill(log, player_x, player_y + 1);
-	flood_fill(log, player_x, player_y - 1);
-}
-
-void	find_player_xy(t_log *log)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (log->tmap[y])
-	{
-		x = 0;
-		while (log->tmap[y][x])
-		{
-			if (log->tmap[y][x] == 'P')
-			{
-				log->player_x = x;
-				log->player_y = y;
-				return ;
-			}
-			x++;
-		}
-		y++;
-	}
-}
-
-void	ft_mapcmp(t_log *log)
-{
-	int	i;
-	int	j;
-
-	j = 0;
-	while (j < log->nbligne)
-	{
-		i = 0;
-		while (log->copy_map[j][i])
-		{
-			if (log->copy_map[j][i] == 'C' || log->copy_map[j][i] == 'E')
-			{
-				ft_freexit(log);
-			}
-			i++;
-		}
-		j++;
 	}
 }

@@ -22,6 +22,8 @@ SRC = so_long.c					\
 		get_next_line_utils.c	\
 		so_long_utils.c			\
 		img_fonctions.c			\
+		flood_parsing.c			\
+		ft_key_and_free.c		\
 
 OBJ = $(SRC:.c=.o)
 

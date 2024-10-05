@@ -6,28 +6,28 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:05:58 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/05 03:15:37 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:15:46 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	ft_parsmap(char *argv, t_log *log)
-{
-	int		fd;
-	char	*ligne;
-	(void)ligne;
+// void	ft_parsmap(char *argv, t_log *log)
+// {
+// 	int		fd;
+// 	char	*ligne;
+// 	(void)ligne;
 
-	ligne = NULL;
-	fd = open(argv, O_RDONLY);
-	if (fd < 0)
-		exit(EXIT_SUCCESS);
-	(void)log;
-	ft_size_ligne(fd, log);
-	ft_while_gnl(log, fd, argv);
-	copy_map(log);
-	close(fd);
-}
+// 	ligne = NULL;
+// 	fd = open(argv, O_RDONLY);
+// 	if (fd < 0)
+// 		exit(EXIT_SUCCESS);
+// 	(void)log;
+// 	ft_size_ligne(fd, log);
+// 	ft_while_gnl(log, fd, argv);
+// 	copy_map(log);
+// 	close(fd);
+// }
 
 void	test_error(int argc, char **argv)
 {
@@ -42,27 +42,25 @@ void	test_error(int argc, char **argv)
 	exit(EXIT_SUCCESS);
 }
 
-int	ft_key(int keycode, t_log *log)
-{
-	if (keycode == ESC)
-	{
-		mlx_destroy_window(log->mlx_ptr, log->win_ptr);
-		exit(EXIT_SUCCESS);
-	}
-	return (0);
-}
+// int	ft_key(int keycode, t_log *log)
+// {
+// 	if (keycode == ESC)
+// 	{
+// 		mlx_destroy_window(log->mlx_ptr, log->win_ptr);
+// 		exit(EXIT_SUCCESS);
+// 	}
+// 	return (0);
+// }
 
-int	ft_close(t_log *log)
-{
-	mlx_destroy_window(log->mlx_ptr, log->win_ptr);
-	exit(EXIT_SUCCESS);
-	return (0);
-}
+// int	ft_close(t_log *log)
+// {
+// 	mlx_destroy_window(log->mlx_ptr, log->win_ptr);
+// 	exit(EXIT_SUCCESS);
+// 	return (0);
+// }
 
 int	main(int argc, char **argv)
 {
-	(void)argc;
-	(void)argv;
 	t_log	log;
 
 	log.i = 0;

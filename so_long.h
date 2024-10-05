@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/05 01:12:17 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/05 18:17:22 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <fcntl.h>
 # include "get_next_line.h"
 # include <string.h>
-
 
 # define IMG_HEIGHT	50
 # define IMG_WIDTH	40
@@ -79,16 +78,27 @@ typedef struct s_logan
 	void	*img;
 }	t_log;
 
+//flood_parsing
 void	ft_mapcmp(t_log *log);
 void	copy_map(t_log *log);
 void	find_player_xy(t_log *log);
-void	find_player_xy(t_log *log);
 void	flood_fill(t_log *log, int player_x, int player_y);
+
+//img_fonctions
 void	init_mlx(t_log *log);
+void	load_img(t_log *log);
+void	destroy_mlx(t_log *log);
+
+//so_long_utils
 void	tourmap(char *ligne, t_log *log);
 void	ft_while_gnl(t_log *log, int fd, char *argv);
 void	ft_size_ligne(int fd, t_log *log);
-void	ft_freexit(t_log *log);
 void	ft_check_cpe(t_log *log);
+void	ft_parsmap(char *argv, t_log *log);
+
+//ft_key_and_free
+void	ft_freexit(t_log *log);
+int		ft_close(t_log *log);
+int		ft_key(int keycode, t_log *log);
 
 #endif
