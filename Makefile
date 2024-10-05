@@ -6,21 +6,23 @@
 #    By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 05:41:14 by logkoege          #+#    #+#              #
-#    Updated: 2024/08/08 16:22:38 by logkoege         ###   ########.fr        #
+#    Updated: 2024/10/04 23:49:36 by logkoege         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror
 MLX = -L./minilibx-linux -lmlx -lX11 -lXext -lm
 INCLUDES = -I./minilibx-linux -I.
 
 SRC = so_long.c					\
 		get_next_line.c			\
 		get_next_line_utils.c	\
-		so_long_utils.c
+		so_long_utils.c			\
+		img_fonctions.c			\
+
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)

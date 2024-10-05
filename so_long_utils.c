@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:25:02 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/01 00:35:50 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/05 02:32:19 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	tourmap(char *ligne, t_log *log)
 {
 	log->tmap[log->j] = ft_strdup(ligne);
-	if (log->j == 0 || log->j == log->nbligne - 1)
+	if (log->j == 0 || log->j == log->nbligne -1)
 	{
 		log->i = 0;
 		while (log->tmap[log->j][log->i] != '\n' && log->tmap[log->j][log->i])
@@ -38,9 +38,13 @@ void	tourmap(char *ligne, t_log *log)
 		log->j++;
 }
 
-void	ft_while_gnl(t_log *log, char *ligne, int fd)
+void	ft_while_gnl(t_log *log, int fd, char *argv)
 {
-	while (ligne)
+	char *ligne;
+	
+	fd = open(argv, O_RDONLY);
+	
+	while (1)
 	{
 		ligne = get_next_line(fd);
 		if (!ligne)
@@ -62,16 +66,21 @@ void	ft_while_gnl(t_log *log, char *ligne, int fd)
 	}
 }
 
-void	ft_size_ligne(char *ligne, int fd, t_log *log)
+void	ft_size_ligne(int fd, t_log *log)
 {
+	char *ligne;
+	int i = 0;
 	log->nbligne = 0;
-	while (1)
+	while (ligne)
 	{
-		log->nbligne++;
 		ligne = get_next_line(fd);
+		if (i == 0)
+			log->map_x = ft_strlen(ligne);
 		if (!ligne)
 			break ;
+		log->nbligne++;
 		free(ligne);
+		i = 1;
 	}
 	log->tmap = malloc (sizeof(char *) * (log->nbligne));
 	close(fd);
@@ -116,5 +125,78 @@ void	ft_check_cpe(t_log *log)
 		if (log->tmap[log->j][t] == 'E')
 			log->e++;
 		t++;
+	}
+}
+
+
+void	copy_map(t_log *log)
+{
+	int	i;
+
+	i = 0;
+	log->copy_map = malloc(sizeof(char *) * (log->nbligne));
+	while (i < log->nbligne)
+	{
+		log->copy_map[i] = ft_strdup(log->tmap[i]);
+		i++;
+	}
+	find_player_xy(log);
+	flood_fill(log, log->player_x, log->player_y);
+	ft_mapcmp(log);
+}
+
+void	flood_fill(t_log *log, int player_x, int player_y)
+{
+	if (log->copy_map[player_y][player_x] == '1'
+			|| log->copy_map[player_y][player_x] == 'V')
+		return ;
+	log->copy_map[player_y][player_x] = 'V';
+	flood_fill(log, player_x + 1, player_y);
+	flood_fill(log, player_x - 1, player_y);
+	flood_fill(log, player_x, player_y + 1);
+	flood_fill(log, player_x, player_y - 1);
+}
+
+void	find_player_xy(t_log *log)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (log->tmap[y])
+	{
+		x = 0;
+		while (log->tmap[y][x])
+		{
+			if (log->tmap[y][x] == 'P')
+			{
+				log->player_x = x;
+				log->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void	ft_mapcmp(t_log *log)
+{
+	int	i;
+	int	j;
+
+	j = 0;
+	while (j < log->nbligne)
+	{
+		i = 0;
+		while (log->copy_map[j][i])
+		{
+			if (log->copy_map[j][i] == 'C' || log->copy_map[j][i] == 'E')
+			{
+				ft_freexit(log);
+			}
+			i++;
+		}
+		j++;
 	}
 }

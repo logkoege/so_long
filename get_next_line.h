@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/19 02:35:41 by logkoege          #+#    #+#             */
-/*   Updated: 2024/07/30 20:17:30 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/05 03:04:07 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100000
+#  define BUFFER_SIZE 1
 # endif
 
 void	ft_bzero(void *s1, size_t n);
