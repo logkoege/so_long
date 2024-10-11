@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:44:43 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/05 16:45:40 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 00:02:46 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	copy_map(t_log *log)
 
 void	flood_fill(t_log *log, int player_x, int player_y)
 {
+	if (log->copy_map[player_y][player_x] == 'E')
+		log->copy_map[player_y][player_x] = '1';
 	if (log->copy_map[player_y][player_x] == '1'
 			|| log->copy_map[player_y][player_x] == 'V')
 		return ;
@@ -76,7 +78,7 @@ void	ft_mapcmp(t_log *log)
 		{
 			if (log->copy_map[j][i] == 'C' || log->copy_map[j][i] == 'E')
 			{
-				ft_freexit(log);
+				ft_freexit(log, "error: non valid map\n");
 			}
 			i++;
 		}

@@ -6,7 +6,7 @@
 #    By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 05:41:14 by logkoege          #+#    #+#              #
-#    Updated: 2024/10/04 23:49:36 by logkoege         ###   ########.fr        #
+#    Updated: 2024/10/11 23:53:13 by logkoege         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,15 @@ SRC = so_long.c					\
 		img_fonctions.c			\
 		flood_parsing.c			\
 		ft_key_and_free.c		\
+		player_mv.c				\
+		ft_print_char.c			\
+		ft_print_hex.c			\
+		ft_print_percent.c		\
+		ft_print_unsigned.c		\
+		ft_print_ptr.c			\
+		ft_print_str.c			\
+		ft_print_nbr.c			\
+		ft_printf.c				\
 
 OBJ = $(SRC:.c=.o)
 

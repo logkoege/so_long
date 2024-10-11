@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_print_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/12 17:05:58 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/11 23:01:14 by logkoege         ###   ########.fr       */
+/*   Created: 2024/05/14 21:01:20 by logkoege          #+#    #+#             */
+/*   Updated: 2024/05/18 14:45:58 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "ft_printf.h"
 
-int	main(int argc, char **argv)
+int	ft_print_str(char *str)
 {
-	t_log	log;
+	int	i;
 
-	log.i = 0;
-	log.j = 0;
-	log.c = 0;
-	log.p = 0;
-	log.e = 0;
-	log.nb_of_mv = 0;
-	(void)log;
-	log.map = ft_strdup("");
-	test_error(&log, argc, argv);
-	ft_parsmap(argv[1], &log);
-	init_mlx(&log);
-	mlx_hook(log.win_ptr, 2, 1L << 0, player_intructs, &log);
-	mlx_hook(log.win_ptr, 17, 0, ft_close, &log);
-	mlx_loop(log.mlx_ptr);
-	return (0);
+	i = 0;
+	if (!str)
+	{
+		write(1, "(null)", 6);
+		return (6);
+	}
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

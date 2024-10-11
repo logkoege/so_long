@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 19:04:13 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/05 18:15:12 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/11 21:56:55 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,13 @@ void	init_mlx(t_log *log)
 {
 	log->mlx_ptr = mlx_init();
 	if (!log->mlx_ptr)
-	{
-		ft_freexit(log);
-	}
+		ft_freexit(log, "error: mlx init\n");
 	log->win_ptr = mlx_new_window(log->mlx_ptr, (log->map_x - 1) * IMG_WIDTH,
-			IMG_HEIGHT * (log->nbligne - 1), "so_long");
+			IMG_HEIGHT * (log->nbligne), "so_long");
 	if (!log->win_ptr)
-	{
-		ft_freexit(log);
-	}
-	log->img = mlx_new_image(log->mlx_ptr, (log->map_x - 1) * IMG_WIDTH,
-			IMG_HEIGHT * (log->nbligne - 1));
+		ft_freexit(log, "error: window init\n");
+	load_img(log);
+	render_game(log);
 }
 
 void	destroy_mlx(t_log *log)
@@ -75,4 +71,6 @@ void	destroy_mlx(t_log *log)
 		if (log->master_ball)
 			mlx_destroy_image(log->mlx_ptr, log->master_ball);
 	}
+	if (log->mlx_ptr)
+		mlx_destroy_window(log->mlx_ptr, log->win_ptr);
 }
