@@ -39,10 +39,8 @@ void	tourmap(char *ligne, t_log *log)
 
 void	ft_while_gnl(t_log *log, int fd, char *argv)
 {
-	int		i;
 	char	*ligne;
 
-	i = 0;
 	fd = open(argv, O_RDONLY);
 	while (1)
 	{
@@ -93,7 +91,7 @@ void	ft_parsmap(char *argv, t_log *log)
 	ft_size_ligne(fd, log);
 	ft_while_gnl(log, fd, argv);
 	if (log->ct > 0)
-		freexit(log, "error : non valid map\n");
+		ft_freexit(log, "error : non valid map\n");
 	if (log->c < 1 || log->p != 1 || log->e != 1)
 		ft_freexit(log, "error: C, P, E\n");
 	copy_map(log);
