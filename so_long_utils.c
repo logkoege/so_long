@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:25:02 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 19:34:07 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:39:41 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	tourmap(char *ligne, t_log *log)
 			&& log->tmap[log->j][log->i])
 		{
 			if (log->tmap[log->j][log->i] != 49)
-				ft_freexit(log, "error: map y\n");
+				log->ct++;
 			log->i++;
 		}
 	}
@@ -30,7 +30,7 @@ void	tourmap(char *ligne, t_log *log)
 	{
 		if (log->tmap[log->j][0] != '1' ||
 			log->tmap [log->j][log->map_x - 2] != '1')
-			ft_freexit(log, "error: map\n");
+			log->ct++;
 		ft_check_cpe(log);
 	}
 	if (log->j != log->nbligne)
@@ -92,6 +92,8 @@ void	ft_parsmap(char *argv, t_log *log)
 		ft_freexit(log, "error: invalid fd\n");
 	ft_size_ligne(fd, log);
 	ft_while_gnl(log, fd, argv);
+	if (log->ct > 0)
+		freexit(log, "error : non valid map\n");
 	if (log->c < 1 || log->p != 1 || log->e != 1)
 		ft_freexit(log, "error: C, P, E\n");
 	copy_map(log);

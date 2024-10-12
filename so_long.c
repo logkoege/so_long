@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/12 17:05:58 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/11 23:01:14 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:36:05 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	log.c = 0;
 	log.p = 0;
 	log.e = 0;
+	log.ct = 0;
 	log.nb_of_mv = 0;
 	(void)log;
 	log.map = ft_strdup("");

@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 19:33:25 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:35:54 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ typedef struct s_logan
 	void	*img;
 	int		nb_of_mv;
 	char	*ligne;
+	int		ct;
 
 }	t_log;
 
