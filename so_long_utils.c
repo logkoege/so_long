@@ -77,10 +77,7 @@ void	ft_size_ligne(int fd, t_log *log)
 	}
 	if (IMG_HEIGHT * (log->nbligne - 1) > 1080
 		|| (log->map_x - 1) * IMG_WIDTH > 1920)
-	{
-		write(1, "error: map trop grande\n", 23);
-		exit(EXIT_SUCCESS);
-	}
+		ft_freexit(log, "error: size map or map x\n");
 	log->tmap = malloc (sizeof(char *) * (log->nbligne));
 	close(fd);
 }
@@ -93,11 +90,7 @@ void	ft_parsmap(char *argv, t_log *log)
 	if (fd < 0)
 		ft_freexit(log, "error: invalid fd\n");
 	ft_size_ligne(fd, log);
-	printf("lp\n");
 	ft_while_gnl(log, fd, argv);
-	printf("lp\n");
-	if (log->map_x != ft_strlen(log->ligne))
-		ft_freexit(log, "error: map x\n");
 	if (log->c < 1 || log->p != 1 || log->e != 1)
 		ft_freexit(log, "error: C, P, E\n");
 	copy_map(log);
