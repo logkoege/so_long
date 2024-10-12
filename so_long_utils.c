@@ -92,8 +92,8 @@ void	ft_parsmap(char *argv, t_log *log)
 	ft_while_gnl(log, fd, argv);
 	if (log->ct > 0)
 		ft_freexit(log, "error : non valid map\n");
-	//if (log->c < 1 || log->p != 1 || log->e != 1)
-		//ft_freexit(log, "error: C, P, E\n");
+	if (log->c < 1 || log->p != 1 || log->e != 1)
+		ft_freexit(log, "error: C, P, E\n");
 	copy_map(log);
 	close(fd);
 }
