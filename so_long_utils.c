@@ -46,13 +46,6 @@ void	ft_while_gnl(t_log *log, int fd, char *argv)
 	while (1)
 	{
 		ligne = get_next_line(fd);
-		printf("pk\n");
-		if (i == 0)
-		{
-			i++;
-			strcpy(log->ligne, ligne);
-		}
-		printf("pk\n");
 		if (!ligne)
 			break ;
 		tourmap(ligne, log);
@@ -76,9 +69,11 @@ void	ft_size_ligne(int fd, t_log *log)
 			log->map_x = ft_strlen(ligne);
 		if (!ligne)
 			break ;
+		if (ft_strlen(ligne) != log->map_x)
+			i = 500;
 		log->nbligne++;
 		free(ligne);
-		i = 1;
+		i++;
 	}
 	if (IMG_HEIGHT * (log->nbligne - 1) > 1080
 		|| (log->map_x - 1) * IMG_WIDTH > 1920)
