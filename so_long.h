@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 00:18:20 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:33:25 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,10 @@ int		ft_key(int keycode, t_log *log);
 void	test_error(t_log *log, int argc, char **argv);
 
 //player_mv
-int		new_place_valid(int x,int y, t_log *log);
+int		new_place_valid(int x, int y, t_log *log);
 void	*img_place(char place, int player_direction, t_log *log);
 int		player_intructs(int keycode, t_log *log);
 void	player_mv(int x, int y, t_log *log);
 void	render_game(t_log *log);
-
 
 #endif

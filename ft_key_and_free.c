@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:50:53 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 00:05:51 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:33:03 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	ft_close(t_log *log)
 {
-
 	ft_freexit(log, NULL);
 	mlx_destroy_window(log->mlx_ptr, log->win_ptr);
 	exit(EXIT_SUCCESS);

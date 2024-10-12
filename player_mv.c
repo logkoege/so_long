@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:48:27 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/11 23:57:51 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/12 19:32:03 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,7 @@ int	player_intructs(int keycode, t_log *log)
 {
 	if (keycode == ESC)
 	{
-		mlx_destroy_window(log->mlx_ptr, log->win_ptr);
-		exit(EXIT_SUCCESS);
+		ft_close(log);
 	}
 	if (keycode == W)
 	{
@@ -68,15 +67,17 @@ int	player_intructs(int keycode, t_log *log)
 	}
 	return (0);
 }
+
 int	new_place_valid(int x, int y, t_log *log)
 {
 	char	new_place;
-	
+
 	new_place = log->tmap[log->player_y + y][log->player_x + x];
-	if (new_place == '0' || new_place == 'C' ||new_place == 'E')
+	if (new_place == '0' || new_place == 'C' || new_place == 'E')
 		return (1);
 	return (0);
 }
+
 void	*img_place(char place, int player_direction, t_log *log)
 {
 	if (place == '1')
@@ -100,26 +101,29 @@ void	*img_place(char place, int player_direction, t_log *log)
 	}
 	return (NULL);
 }
+
 void	render_game(t_log *log)
 {
 	int	x;
 	int	y;
-	
+
 	y = 0;
-	while(y < log->nbligne)
+	while (y < log->nbligne)
 	{
 		x = 0;
-		while(x < log->map_x)
+		while (x < log->map_x)
 		{
 			log->img = img_place(log->tmap[y][x], log->player, log);
 			if (log->img)
 			{
-				mlx_put_image_to_window(log->mlx_ptr, log->win_ptr, log->img, x * IMG_WIDTH, y * IMG_HEIGHT);
+				mlx_put_image_to_window(log->mlx_ptr, log->win_ptr, log->img,
+					x * IMG_WIDTH, y * IMG_HEIGHT);
 			}
 			x++;
 		}
 		y++;
 	}
 	log->img = img_place('P', log->player, log);
-	mlx_put_image_to_window(log->mlx_ptr, log->win_ptr, log->img, log->player_x * IMG_WIDTH, log->player_y * IMG_HEIGHT);
+	mlx_put_image_to_window(log->mlx_ptr, log->win_ptr, log->img,
+		log->player_x * IMG_WIDTH, log->player_y * IMG_HEIGHT);
 }
