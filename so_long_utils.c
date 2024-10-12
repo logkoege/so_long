@@ -18,7 +18,8 @@ void	tourmap(char *ligne, t_log *log)
 	if (log->j == 0 || log->j == log->nbligne -1)
 	{
 		log->i = 0;
-		while (log->tmap[log->j][log->i] != '\n' && log->tmap[log->j][log->i])
+		while (log->tmap[log->j][log->i] != '\n'
+			&& log->tmap[log->j][log->i])
 		{
 			if (log->tmap[log->j][log->i] != 49)
 				ft_freexit(log, "error: map y\n");
@@ -75,7 +76,7 @@ void	ft_size_ligne(int fd, t_log *log)
 		free(ligne);
 		i++;
 	}
-	if (IMG_HEIGHT * (log->nbligne - 1) > 1080
+	if ((i > 500) || IMG_HEIGHT * (log->nbligne - 1) > 1080
 		|| (log->map_x - 1) * IMG_WIDTH > 1920)
 		ft_freexit(log, "error: size map or map x\n");
 	log->tmap = malloc (sizeof(char *) * (log->nbligne));
