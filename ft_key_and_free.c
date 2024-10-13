@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:50:53 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/13 20:53:57 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/13 21:00:20 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	ft_freexit(t_log *log, char *msg)
 
 	j = -1;
 	i = -1;
-	
 	while (msg[++i])
 		write(1, &msg[i], 1);
 	if (log->tmap)
