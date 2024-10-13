@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:25:02 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 19:39:41 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:44:21 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	ft_size_ligne(int fd, t_log *log)
 
 	i = 0;
 	log->nbligne = 0;
-	while (ligne)
+	ligne = NULL;
+	while (1)
 	{
 		ligne = get_next_line(fd);
 		if (i == 0)
@@ -74,9 +75,8 @@ void	ft_size_ligne(int fd, t_log *log)
 		free(ligne);
 		i++;
 	}
-	if ((i > 500) || IMG_HEIGHT * (log->nbligne - 1) > 1080
-		|| (log->map_x - 1) * IMG_WIDTH > 1920)
-		ft_freexit(log, "error: size map or map x\n");
+	if (i > 500)
+		ft_freexit(log, "error: map x\n");
 	log->tmap = malloc (sizeof(char *) * (log->nbligne));
 	close(fd);
 }
@@ -91,7 +91,7 @@ void	ft_parsmap(char *argv, t_log *log)
 	ft_size_ligne(fd, log);
 	ft_while_gnl(log, fd, argv);
 	if (log->ct > 0)
-		ft_freexit(log, "error : non valid map\n");
+		ft_freexit(log, "error : non vvalid map\n");
 	if (log->c < 1 || log->p != 1 || log->e != 1)
 		ft_freexit(log, "error: C, P, E\n");
 	copy_map(log);

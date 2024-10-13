@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 16:44:43 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 00:02:46 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:46:35 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	ft_mapcmp(t_log *log)
 		{
 			if (log->copy_map[j][i] == 'C' || log->copy_map[j][i] == 'E')
 			{
-				ft_freexit(log, "error: non valid map\n");
+				ft_freexit(log, "error: non valid map(flood fill)\n");
 			}
 			i++;
 		}

@@ -6,14 +6,14 @@
 #    By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/06 05:41:14 by logkoege          #+#    #+#              #
-#    Updated: 2024/10/11 23:53:13 by logkoege         ###   ########.fr        #
+#    Updated: 2024/10/13 20:51:03 by logkoege         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = so_long
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror 
 MLX = -L./minilibx-linux -lmlx -lX11 -lXext -lm
 INCLUDES = -I./minilibx-linux -I.
 

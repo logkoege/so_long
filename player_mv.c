@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:48:27 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 19:32:03 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:48:14 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	player_intructs(int keycode, t_log *log)
 {
 	if (keycode == ESC)
 	{
-		ft_close(log);
+		ft_freexit(log, "Esc\n");
 	}
 	if (keycode == W)
 	{

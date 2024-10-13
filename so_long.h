@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/06 05:42:52 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/12 19:35:54 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/13 20:20:22 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,8 +104,8 @@ void	ft_parsmap(char *argv, t_log *log);
 //ft_key_and_free
 void	ft_freexit(t_log *log, char *msg);
 int		ft_close(t_log *log);
-int		ft_key(int keycode, t_log *log);
 void	test_error(t_log *log, int argc, char **argv);
+void	init_var(t_log *log);
 
 //player_mv
 int		new_place_valid(int x, int y, t_log *log);
