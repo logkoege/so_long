@@ -6,7 +6,7 @@
 /*   By: logkoege <logkoege@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/24 19:25:02 by logkoege          #+#    #+#             */
-/*   Updated: 2024/10/13 20:44:21 by logkoege         ###   ########.fr       */
+/*   Updated: 2024/10/14 18:50:18 by logkoege         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	ft_size_ligne(int fd, t_log *log)
 	while (1)
 	{
 		ligne = get_next_line(fd);
-		if (i == 0)
+		if (i == 0 && ligne != NULL)
 			log->map_x = ft_strlen(ligne);
 		if (!ligne)
 			break ;
